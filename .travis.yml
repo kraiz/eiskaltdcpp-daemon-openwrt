@@ -12,3 +12,5 @@ install:
     - cd openwrt
     - make defconfig
     - make prereq
+    - make tools/install
+    - make toolchain/install
