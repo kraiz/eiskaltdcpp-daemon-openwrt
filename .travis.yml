@@ -1,8 +1,14 @@
+notifications:
+    email: false
 language: c
 compiler: gcc
-before_install:
-    - sudo apt-get update -qq
-    - sudo apt-get install -y libxml2-dev
-    - ./setup.sh
-script:
-    - make
+env:
+    - OPENWRT=14.07
+#before_install:
+#    - sudo apt-get update -qq
+#    - sudo apt-get install -y
+install:
+    - git clone git://git.openwrt.org/$OPENWRT/openwrt.git
+    - cd openwrt
+    - make defconfig
+    - make prereq
