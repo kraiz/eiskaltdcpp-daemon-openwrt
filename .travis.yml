@@ -8,9 +8,18 @@ env:
 #    - sudo apt-get update -qq
 #    - sudo apt-get install -y
 install:
+    # prepare openwrt toolchain
+    - cd $TRAVIS_BUILD_DIR
     - git clone git://git.openwrt.org/$OPENWRT/openwrt.git
     - cd openwrt
     - make defconfig
     - make prereq
-    - make tools/install
-    - make toolchain/install
+    - make tools/install V=1
+    - make toolchain/install V=1
+    # get eiskalt and patch it
+    - cd $TRAVIS_BUILD_DIR
+    - git clone git@github.com:eiskaltdcpp/eiskaltdcpp.git
+    - cd eiskaltdcpp
+    - git apply --stat ../eiskalt-ulibc.patch
+    # now compile eiskalt using the openwrt toolchain
+    
