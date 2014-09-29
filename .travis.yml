@@ -13,7 +13,7 @@ install:
     - curl https://downloads.openwrt.org/barrier_breaker/14.07-rc3/ar71xx/generic/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar -xj
     # get eiskalt and patch it
     - cd $TRAVIS_BUILD_DIR
-    - git clone git@github.com:eiskaltdcpp/eiskaltdcpp.git
+    - git clone https://github.com/eiskaltdcpp/eiskaltdcpp.git
     - cd eiskaltdcpp
     - git apply --stat ../eiskalt-ulibc.patch
 script:
