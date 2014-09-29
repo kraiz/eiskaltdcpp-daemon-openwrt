@@ -8,13 +8,11 @@ install:
     - curl https://downloads.openwrt.org/barrier_breaker/14.07-rc3/ar71xx/generic/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar -xj
 
     # move our package into sdk
-    - mv $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/
+    - mv $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
 
 script:
     # now compile using openwrt sdk
     - cd $TRAVIS_BUILD_DIR/sdk
-    - ls -la package
-    - ls -la package/eiskaltdcpp
     - make package/eiskaltdcpp/download V=99
     - make package/eiskaltdcpp/prepare V=99
     - make package/eiskaltdcpp/compile V=99
