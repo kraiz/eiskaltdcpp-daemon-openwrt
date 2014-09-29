@@ -2,24 +2,20 @@ notifications:
     email: false
 language: c
 compiler: gcc
-env:
-    - OPENWRT=14.07
 #before_install:
 #    - sudo apt-get update -qq
 #    - sudo apt-get install -y
 install:
-    # prepare openwrt toolchain
+    # setup openwrt sdk
     - cd $TRAVIS_BUILD_DIR
-    - git clone git://git.openwrt.org/$OPENWRT/openwrt.git
+    - mkdir openwrt
     - cd openwrt
-    - make defconfig
-    - make prereq
-    - make tools/install V=1
-    - make toolchain/install V=1
+    - curl https://downloads.openwrt.org/barrier_breaker/14.07-rc3/ar71xx/generic/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar -xj
     # get eiskalt and patch it
     - cd $TRAVIS_BUILD_DIR
     - git clone git@github.com:eiskaltdcpp/eiskaltdcpp.git
     - cd eiskaltdcpp
     - git apply --stat ../eiskalt-ulibc.patch
-    # now compile eiskalt using the openwrt toolchain
-    
+script:
+    # now compile eiskalt using the openwrt sdk
+    - echo "step 1"
