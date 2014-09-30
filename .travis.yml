@@ -5,7 +5,7 @@ compiler: gcc
 env:
     - SDK_URL=https://downloads.openwrt.org/barrier_breaker/14.07-rc3/ar71xx/generic/OpenWrt-SDK-ar71xx-for-linux-x86_64-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
 before_install:
-    - sudo apt-get install -y ccache gettext
+    - sudo apt-get install -y ccache
 install:
     # setup openwrt sdk
     - mkdir sdk && cd sdk
@@ -16,7 +16,7 @@ install:
 script:
     # now compile using openwrt sdk
     - cd $TRAVIS_BUILD_DIR/sdk
-    - ./scripts/feeds update
+    - ./scripts/feeds update packages
     - ./scripts/feeds install bzip2
     - make package/eiskaltdcpp/download V=99
     - make package/eiskaltdcpp/prepare V=99
