@@ -16,6 +16,8 @@ install:
 script:
     # now compile using openwrt sdk
     - cd $TRAVIS_BUILD_DIR/sdk
+    - ./scripts/feeds update
+    - ./scripts/feeds install bzip2
     - make package/eiskaltdcpp/download V=99
     - make package/eiskaltdcpp/prepare V=99
     - make package/eiskaltdcpp/compile V=99
