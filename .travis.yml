@@ -11,6 +11,11 @@ install:
     
     # move our package into sdk
     - ln -s $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp $TRAVIS_BUILD_DIR/eiskaltdcpp 
+    
+    - ls -la $TRAVIS_BUILD_DIR
+    - ls -la $TRAVIS_BUILD_DIR/sdk
+    - ls -la $TRAVIS_BUILD_DIR/sdk/package
+    - ls -la $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
 script:
     # now compile using openwrt sdk
     - cd $TRAVIS_BUILD_DIR/sdk
