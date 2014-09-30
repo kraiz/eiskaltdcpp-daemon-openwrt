@@ -21,6 +21,7 @@ define Package/eiskaltdcpp
   CATEGORY:=Network
   TITLE:=Eiskalt DC++ Client
   URL:=https://github.com/eiskaltdcpp/eiskaltdcpp
+  DEPENDS:=+bzip2
 endef
 
 define Package/eiskaltdcpp/description
