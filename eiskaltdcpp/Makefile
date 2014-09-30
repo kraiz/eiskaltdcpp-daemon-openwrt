@@ -31,13 +31,13 @@ define Build/Configure
 	$(call Build/Configure/Default)
 endef
 
-TOOL_PATH = ${STAGING_DIR}/../toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2
-ENV_PATH = ${STAGING_DIR}/../target-mips_34kc_uClibc-0.9.33.2
-TARGET_CFLAGS += -DDSO_DLFCN -DHAVE_DLFCN_H -I${ENV_PATH}/usr/include -I${ENV_PATH}/include -I${TOOL_PATH}/usr/include -I${TOOL_PATH}/include -Os -pipe -mno-branch-likely -mips32r2 -mtune=34kc -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -msoft-float -fpic -fomit-frame-pointer -Wall
+#TOOL_PATH = ${STAGING_DIR}/../toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2
+#ENV_PATH = ${STAGING_DIR}/../target-mips_34kc_uClibc-0.9.33.2
+#TARGET_CFLAGS += -DDSO_DLFCN -DHAVE_DLFCN_H -I${ENV_PATH}/usr/include -I${ENV_PATH}/include -I${TOOL_PATH}/usr/include -I${TOOL_PATH}/include -Os -pipe -mno-branch-likely -mips32r2 -mtune=34kc -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -msoft-float -fpic -fomit-frame-pointer -Wall
 
 CMAKE_OPTIONS = \
-	-DCMAKE_BUILD_TYPE=Release  \
-	-DCMAKE_INSTALL_PREFIX=/opt  \
+#	-DCMAKE_BUILD_TYPE=Release  \
+#	-DCMAKE_INSTALL_PREFIX=/opt  \
 	-DUSE_IDNA=OFF  \
 	-DLINK=STATIC  \
 	-DUSE_QT=OFF  \
@@ -50,10 +50,10 @@ CMAKE_OPTIONS = \
 	-DWITH_EXAMPLES=OFF  \
 	-DFORCE_XDG=OFF  \
 	-DLOCAL_BOOST=ON  \
-	-DDO_NOT_USE_MUTEX=ON \
-        -DCMAKE_C_COMPILER=$(TOOL_PATH)/bin/mips-openwrt-linux-uclibc-gcc \
-	-DCMAKE_CXX_COMPILER=$(TOOL_PATH)/bin/mips-openwrt-linux-uclibc-g++ \
-	-DCMAKE_FIND_ROOT_PATH=$(ENV_PATH)
+	-DDO_NOT_USE_MUTEX=ON 
+#   -DCMAKE_C_COMPILER=$(TOOL_PATH)/bin/mips-openwrt-linux-uclibc-gcc \
+#	-DCMAKE_CXX_COMPILER=$(TOOL_PATH)/bin/mips-openwrt-linux-uclibc-g++ \
+#	-DCMAKE_FIND_ROOT_PATH=$(ENV_PATH)
 
 define Package/eiskaltdcpp/install
 	$(INSTALL_DIR) $(1)/usr/sbin
