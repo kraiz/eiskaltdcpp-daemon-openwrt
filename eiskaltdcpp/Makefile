@@ -32,8 +32,6 @@ define Build/Configure
 	$(call Build/Configure/Default)
 endef
 
-EXTRA_CFLAGS = msgfmt
-
 CMAKE_OPTIONS = \
 	-DUSE_IDNA=OFF  \
 	-DLINK=STATIC  \
