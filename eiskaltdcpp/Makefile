@@ -32,6 +32,8 @@ define Build/Configure
 	$(call Build/Configure/Default)
 endef
 
+EXTRA_CFLAGS = msgfmt
+
 CMAKE_OPTIONS = \
 	-DUSE_IDNA=OFF  \
 	-DLINK=STATIC  \
@@ -46,7 +48,7 @@ CMAKE_OPTIONS = \
 	-DFORCE_XDG=OFF  \
 	-DLOCAL_BOOST=ON  \
 	-DDO_NOT_USE_MUTEX=ON 
-    -DCMAKE_C_COMPILER=$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-uclibc-gcc \
+	-DCMAKE_C_COMPILER=$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-uclibc-gcc \
  	-DCMAKE_CXX_COMPILER=$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-uclibc-g++
 
 define Package/eiskaltdcpp/install
