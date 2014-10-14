@@ -25,5 +25,5 @@ deploy:
   skip_cleanup: true
   file: "sdk/bin/ar71xx/packages/eiskaltdcpp_*.ipk"
   on:
-    repo: kraiz/eiskalt-daemon-openwrt
     tags: true
+    all_branches: true
