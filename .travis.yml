@@ -1,24 +1,27 @@
 notifications:
-    email: false
+  email: false
 language: c
 compiler: gcc
 env:
-    - SDK_URL=https://downloads.openwrt.org/barrier_breaker/14.07-rc3/ar71xx/generic/OpenWrt-SDK-ar71xx-for-linux-x86_64-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
+- SDK_URL=https://downloads.openwrt.org/barrier_breaker/14.07-rc3/ar71xx/generic/OpenWrt-SDK-ar71xx-for-linux-x86_64-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
 before_install:
-    - sudo apt-get install -y ccache 
+- sudo apt-get install -y ccache
 install:
-    # setup openwrt sdk
-    - mkdir sdk && cd sdk
-    - curl $SDK_URL | tar -xj --strip-components=1
-    
-    # link our package into sdk
-    - ln -s $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp 
+- mkdir sdk && cd sdk
+- curl $SDK_URL | tar -xj --strip-components=1
+- ln -s $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
 script:
-    # now compile using openwrt sdk
-    - cd $TRAVIS_BUILD_DIR/sdk
-    - ./scripts/feeds update packages
-    - ./scripts/feeds install bzip2
-    - make package/eiskaltdcpp/download V=1
-    - make package/eiskaltdcpp/prepare V=1
-    - make package/eiskaltdcpp/compile V=1
-    - ls -la $TRAVIS_BUILD_DIR/sdk/bin/ar71xx/packages/
+- cd $TRAVIS_BUILD_DIR/sdk
+- "./scripts/feeds update packages"
+- "./scripts/feeds install bzip2"
+- make package/eiskaltdcpp/download V=1
+- make package/eiskaltdcpp/prepare V=1
+- make package/eiskaltdcpp/compile V=1
+- ls -la $TRAVIS_BUILD_DIR/sdk/bin/ar71xx/packages/
+deploy:
+  provider: releases
+  api_key:
+    secure: gclYV0a3q36jUZmfQNCLGtrAf+ZbhdYc1W7s0bNouBeMdozp2AsJDiyqOQYX3rE2I+bOJXrxvsamqaTrNuzFk3bL00efuBrq/uGSwCxrn4/wl+Yt5S5iS7I6LCd3PEdzZLkG3Nbp6PKqng/ILO2XA3JnYkJ/jhIRJBLrpu0AWt0=
+  file: "$TRAVIS_BUILD_DIR/sdk/bin/ar71xx/packages/eiskaltdcpp_*.ipk"
+  on:
+    repo: kraiz/eiskalt-daemon-openwrt
