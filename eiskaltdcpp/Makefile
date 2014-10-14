@@ -22,7 +22,7 @@ define Package/eiskaltdcpp
   CATEGORY:=Network
   TITLE:=Eiskalt DC++ Client
   URL:=https://github.com/eiskaltdcpp/eiskaltdcpp
-  DEPENDS:=+zlib +bzip2 +libopenssl +libthread +libstdcpp
+  DEPENDS:=+zlib +bzip2 +libopenssl +libpthread +libstdcpp
 endef
 
 define Package/eiskaltdcpp/description
@@ -56,8 +56,8 @@ CMAKE_OPTIONS = \
 	-DGETTEXT_INCLUDE_DIR="$(INTL_PREFIX)/include"
 
 define Package/eiskaltdcpp/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/eiskaltdcpp-daemon $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/sbin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/eiskaltdcpp-daemon/eiskaltdcpp-daemon $(1)/usr/sbin/
 endef
 
 $(eval $(call BuildPackage,eiskaltdcpp))
