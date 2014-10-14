@@ -18,7 +18,7 @@ script:
     - cd $TRAVIS_BUILD_DIR/sdk
     - ./scripts/feeds update packages
     - ./scripts/feeds install bzip2
-    - make package/eiskaltdcpp/download
-    - make package/eiskaltdcpp/prepare
-    - make package/eiskaltdcpp/compile
+    - make package/eiskaltdcpp/download V=1
+    - make package/eiskaltdcpp/prepare V=1
+    - make package/eiskaltdcpp/compile V=1
     - ls -la $TRAVIS_BUILD_DIR/sdk/bin/ar71xx/packages/
