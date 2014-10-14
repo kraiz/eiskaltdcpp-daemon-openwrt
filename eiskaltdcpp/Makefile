@@ -15,13 +15,14 @@ PKG_BUILD_DEPENDS:=
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
+include $(INCLUDE_DIR)/nls.mk
 
 define Package/eiskaltdcpp
   SECTION:=base
   CATEGORY:=Network
   TITLE:=Eiskalt DC++ Client
   URL:=https://github.com/eiskaltdcpp/eiskaltdcpp
-  DEPENDS:=+bzip2
+  DEPENDS:=+zlib +bzip2 +libopenssl +libthread +libstdcpp
 endef
 
 define Package/eiskaltdcpp/description
@@ -45,9 +46,14 @@ CMAKE_OPTIONS = \
 	-DWITH_EXAMPLES=OFF  \
 	-DFORCE_XDG=OFF  \
 	-DLOCAL_BOOST=ON  \
-	-DDO_NOT_USE_MUTEX=ON 
-    -DCMAKE_C_COMPILER=$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-uclibc-gcc \
- 	-DCMAKE_CXX_COMPILER=$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-uclibc-g++
+	-DDO_NOT_USE_MUTEX=ON \
+	-DCMAKE_CXX_FLAGS="-pipe -mno-branch-likely -mips32r2 -mtune=34kc -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -msoft-float -fpic -fomit-frame-pointer -Wall" \
+	-DCMAKE_C_FLAGS="-pipe -mno-branch-likely -mips32r2 -mtune=34kc -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -msoft-float -fpic -fomit-frame-pointer -Wall" \
+	-DCMAKE_FIND_ROOT_PATH="$(STAGING_DIR)" \
+	-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
+	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
+	-DCMAKE_PREFIX_PATH="$(ICONV_PREFIX)" \
+	-DGETTEXT_INCLUDE_DIR="$(INTL_PREFIX)/include"
 
 define Package/eiskaltdcpp/install
 	$(INSTALL_DIR) $(1)/usr/sbin
