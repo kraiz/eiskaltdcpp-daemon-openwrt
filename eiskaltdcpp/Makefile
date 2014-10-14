@@ -56,8 +56,8 @@ CMAKE_OPTIONS = \
 	-DGETTEXT_INCLUDE_DIR="$(INTL_PREFIX)/include"
 
 define Package/eiskaltdcpp/install
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/eiskaltdcpp-daemon $(1)/usr/sbin/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/eiskaltdcpp-daemon $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,eiskaltdcpp))
