@@ -23,8 +23,8 @@ deploy:
   api_key:
     secure: gclYV0a3q36jUZmfQNCLGtrAf+ZbhdYc1W7s0bNouBeMdozp2AsJDiyqOQYX3rE2I+bOJXrxvsamqaTrNuzFk3bL00efuBrq/uGSwCxrn4/wl+Yt5S5iS7I6LCd3PEdzZLkG3Nbp6PKqng/ILO2XA3JnYkJ/jhIRJBLrpu0AWt0=
   skip_cleanup: true
-  file: "$TRAVIS_BUILD_DIR/sdk/bin/ar71xx/packages/eiskaltdcpp_*.ipk"
   file_glob: true
+  file: "sdk/bin/ar71xx/packages/eiskaltdcpp_*.ipk"
   on:
     tags: true
     all_branches: true
