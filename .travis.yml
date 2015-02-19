@@ -26,5 +26,4 @@ deploy:
   file_glob: true
   file: "sdk/bin/ar71xx/packages/eiskaltdcpp_*.ipk"
   on:
-    tags: true
     all_branches: true
