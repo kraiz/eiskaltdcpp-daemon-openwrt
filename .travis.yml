@@ -9,6 +9,8 @@ install:
 - mkdir sdk && cd sdk
 - curl $SDK_URL | tar -xj --strip-components=1
 - ln -s $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
+# preempt failing download in cmake
+- curl http://sf.net/projects/eiskaltdcpp/files/Other/boost.tar.gz -O $TRAVIS_BUILD_DIR/sdk/build_dir/target-*/eiskaltdcpp-0.1.2/
 script:
 - cd $TRAVIS_BUILD_DIR/sdk
 - ls -la $TRAVIS_BUILD_DIR
