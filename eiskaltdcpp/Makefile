@@ -47,8 +47,8 @@ CMAKE_OPTIONS = \
 	-DFORCE_XDG=OFF  \
 	-DLOCAL_BOOST=ON  \
 	-DDO_NOT_USE_MUTEX=ON \
-	-DCMAKE_CXX_FLAGS="-pipe -mno-branch-likely -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -fpic -fomit-frame-pointer -Wall" \
-	-DCMAKE_C_FLAGS="-pipe -mno-branch-likely -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -fpic -fomit-frame-pointer -Wall" \
+	-DCMAKE_CXX_FLAGS="-pipe -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -fpic -fomit-frame-pointer -Wall" \
+	-DCMAKE_C_FLAGS="-pipe -fno-caller-saves -fhonour-copts -Wno-error=unused-but-set-variable -fpic -fomit-frame-pointer -Wall" \
 	-DCMAKE_FIND_ROOT_PATH="$(STAGING_DIR)" \
 	-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
 	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
