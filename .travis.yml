@@ -12,7 +12,7 @@ env:
 install:
 - mkdir sdk && cd sdk
 - SDK_NAME=$( curl https://downloads.openwrt.org/chaos_calmer/${VERSION}/${ARCH}/generic/md5sums | grep -Po '(?<=\s\*)OpenWrt-SDK.*$' )
-- curl https://downloads.openwrt.org/chaos_calmer/15.05/${ARCH}/generic/${SDK_NAME} | tar -xj --strip-components=1
+- curl https://downloads.openwrt.org/chaos_calmer/${VERSION}/${ARCH}/generic/${SDK_NAME} | tar -xj --strip-components=1
 - ln -s $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
 script:
 - cd $TRAVIS_BUILD_DIR/sdk
