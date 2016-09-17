@@ -11,22 +11,13 @@ install:
 - ln -s $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
 script:
 - cd $TRAVIS_BUILD_DIR/sdk
-- ls -la $TRAVIS_BUILD_DIR
-- ls -la $TRAVIS_BUILD_DIR/sdk
 - make package/eiskaltdcpp/download V=99
 - make package/eiskaltdcpp/prepare V=99
-- ls -la $TRAVIS_BUILD_DIR/sdk
-- ls -la $TRAVIS_BUILD_DIR/sdk/build_dir
-- ls -la $TRAVIS_BUILD_DIR/sdk/build_dir/target-*
-- ls -la $TRAVIS_BUILD_DIR/sdk/build_dir/target-*/eiskaltdcpp-*/
 # preempt failing download in cmake
 - cd $TRAVIS_BUILD_DIR/sdk/build_dir/target-*/eiskaltdcpp-*/
 - curl -LO http://sf.net/projects/eiskaltdcpp/files/Other/boost.tar.gz
+- cd $TRAVIS_BUILD_DIR/sdk
 - make package/eiskaltdcpp/compile V=99
-- ls -la $TRAVIS_BUILD_DIR/sdk
-- ls -la $TRAVIS_BUILD_DIR/sdk/bin
-- ls -la $TRAVIS_BUILD_DIR/sdk/bin/*
-- ls -la $TRAVIS_BUILD_DIR/sdk/bin/*/packages/
 deploy:
   provider: releases
   api_key:
