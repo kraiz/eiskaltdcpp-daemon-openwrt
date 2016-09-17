@@ -11,9 +11,14 @@ install:
 - ln -s $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
 script:
 - cd $TRAVIS_BUILD_DIR/sdk
+- ls -la $TRAVIS_BUILD_DIR
+- ls -la $TRAVIS_BUILD_DIR/sdk
 - make package/eiskaltdcpp/download V=99
 - make package/eiskaltdcpp/prepare V=99
 - make package/eiskaltdcpp/compile V=99
+- ls -la $TRAVIS_BUILD_DIR/sdk
+- ls -la $TRAVIS_BUILD_DIR/sdk/bin
+- ls -la $TRAVIS_BUILD_DIR/sdk/bin/*
 - ls -la $TRAVIS_BUILD_DIR/sdk/bin/*/packages/
 deploy:
   provider: releases
