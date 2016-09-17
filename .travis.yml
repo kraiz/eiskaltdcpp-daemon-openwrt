@@ -3,10 +3,12 @@ notifications:
 language: c
 compiler: gcc
 sudo: false
+addons:
+  apt:
+    packages:
+    - ccache
 env:
 - SDK_URL=https://downloads.openwrt.org/chaos_calmer/15.05/ar71xx/generic/OpenWrt-SDK-15.05-ar71xx-generic_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64.tar.bz2
-before_install:
-- sudo apt-get install -y ccache
 install:
 - mkdir sdk && cd sdk
 - curl $SDK_URL | tar -xj --strip-components=1
