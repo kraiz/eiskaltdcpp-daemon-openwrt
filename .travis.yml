@@ -7,8 +7,39 @@ env:
   global:
   - VERSION=15.05.1
   matrix:
+  - ARCH=adm5120
+  - ARCH=adm8668
+  - ARCH=ar7
   - ARCH=ar71xx
+  - ARCH=at91
+  - ARCH=ath25
+  - ARCH=au1000
+  - ARCH=bcm53xx
+  - ARCH=brcm2708
+  - ARCH=brcm47xx
+  - ARCH=brcm63xx
+  - ARCH=cns3xxx
+  - ARCH=cns3xxx
+  - ARCH=imx6
+  - ARCH=ixp4xx
   - ARCH=kirkwood
+  - ARCH=lantiq
+  - ARCH=malta
+  - ARCH=mcs814x
+  - ARCH=mpc85xx
+  - ARCH=mvebu
+  - ARCH=mxs
+  - ARCH=netlogic
+  - ARCH=octeon
+  - ARCH=omap
+  - ARCH=oxnas
+  - ARCH=ppc44x
+  - ARCH=ramips
+  - ARCH=rb532
+  - ARCH=realview
+  - ARCH=sunxi
+  - ARCH=x86
+  - ARCH=xburst
 install:
 - mkdir sdk && cd sdk
 - SDK_NAME=$( curl https://downloads.openwrt.org/chaos_calmer/${VERSION}/${ARCH}/generic/md5sums | grep -Po '(?<=\s\*)OpenWrt-SDK.*$' )
