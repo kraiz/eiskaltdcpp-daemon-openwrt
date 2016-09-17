@@ -2,8 +2,9 @@ notifications:
   email: false
 language: c
 compiler: gcc
+sudo: false
 env:
-- SDK_URL=https://downloads.openwrt.org/barrier_breaker/14.07-rc3/ar71xx/generic/OpenWrt-SDK-ar71xx-for-linux-x86_64-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
+- SDK_URL=https://downloads.openwrt.org/chaos_calmer/15.05/ar71xx/generic/OpenWrt-SDK-15.05-ar71xx-generic_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64.tar.bz2
 before_install:
 - sudo apt-get install -y ccache
 install:
@@ -17,14 +18,14 @@ script:
 - make package/eiskaltdcpp/download V=99
 - make package/eiskaltdcpp/prepare V=99
 - make package/eiskaltdcpp/compile V=99
-- ls -la $TRAVIS_BUILD_DIR/sdk/bin/ar71xx/packages/
+- ls -la $TRAVIS_BUILD_DIR/sdk/bin/*/packages/
 deploy:
   provider: releases
   api_key:
     secure: gclYV0a3q36jUZmfQNCLGtrAf+ZbhdYc1W7s0bNouBeMdozp2AsJDiyqOQYX3rE2I+bOJXrxvsamqaTrNuzFk3bL00efuBrq/uGSwCxrn4/wl+Yt5S5iS7I6LCd3PEdzZLkG3Nbp6PKqng/ILO2XA3JnYkJ/jhIRJBLrpu0AWt0=
   skip_cleanup: true
   file_glob: true
-  file: "$TRAVIS_BUILD_DIR/sdk/bin/ar71xx/packages/eiskaltdcpp_*.ipk"
+  file: "$TRAVIS_BUILD_DIR/sdk/bin/*/packages/eiskaltdcpp_*.ipk"
   on:
     tags: true
     all_branches: true
