@@ -4,10 +4,11 @@ language: c
 compiler: gcc
 sudo: false
 env:
-- SDK_URL=https://downloads.openwrt.org/chaos_calmer/15.05/ar71xx/generic/OpenWrt-SDK-15.05-ar71xx-generic_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64.tar.bz2
+- ARCH=ar71xx
+- ARCH=kirkwood
 install:
 - mkdir sdk && cd sdk
-- curl $SDK_URL | tar -xj --strip-components=1
+- curl https://downloads.openwrt.org/chaos_calmer/15.05/${ARCH}/generic/OpenWrt-SDK-15.05-${ARCH}_gcc-4.8-linaro_uClibc-0.9.33.2_eabi.Linux-x86_64.tar.bz2 | tar -xj --strip-components=1
 - ln -s $TRAVIS_BUILD_DIR/eiskaltdcpp $TRAVIS_BUILD_DIR/sdk/package/eiskaltdcpp
 script:
 - cd $TRAVIS_BUILD_DIR/sdk
