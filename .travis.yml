@@ -16,7 +16,7 @@ install:
 script:
 - cd $TRAVIS_BUILD_DIR/sdk
 - "./scripts/feeds update packages"
-- "./scripts/feeds install bzip2"
+- "./scripts/feeds install boost-libs"
 - make package/eiskaltdcpp/download V=99
 - make package/eiskaltdcpp/prepare V=99
 - make package/eiskaltdcpp/compile V=99
